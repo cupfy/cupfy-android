@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">App Hooks</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="b_register_device">Register this device</string>
+    <string name="ad_title_attach_hook">Attach hook</string>
+    <string name="ad_title_set_name">Name this device</string>
+    <string name="ad_button_ok">Ok</string>
+    <string name="ad_button_register">Register</string>
+    <string name="ad_button_cancel">Cancel</string>
+
+    <string name="hint_name">Device name</string>
+    <string name="hint_namespace">Namespace</string>
+
+    <string name="toast_no_internet">No internet connection.</string>
+    <string name="toast_wrong_api_key">This API Key does not exist.</string>
+    <string name="toast_internal_server_error">Whoops, something went wrong.</string>
+
+    <string name="error_required">This field is required!</string>
+    <string name="error_namespace_too_short">This namespace is too short!</string>
+    <string name="error_namespace_not_found">Namespace not found!</string>
+
+    <string name="text_waiting_for_approval">Waiting for approval...</string>
+    <string name="text_activated">Activated</string>
+    <string name="text_deactivated">Deactivated</string>
+
+    <string name="progress_loading">Loading, please wait...</string>
+</resources>
