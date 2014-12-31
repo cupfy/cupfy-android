@@ -21,12 +21,11 @@ import java.util.List;
 import br.com.estudiotrilha.apphooks.adapter.HookAdapter;
 import br.com.estudiotrilha.apphooks.database.Namespace;
 import br.com.estudiotrilha.apphooks.helper.SwipeRefreshLayout;
+import br.com.estudiotrilha.apphooks.helper.Util;
 import br.com.estudiotrilha.apphooks.network.Network;
 
 
 public class MainActivity extends ActionBarActivity implements SwipeRefreshLayout.OnRefreshListener {
-
-    private ConfigureGcm gcm;
 
     private TextView textNoHooks;
     private ListView listHooks;
@@ -67,8 +66,7 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gcm = ConfigureGcm.getInstance();
-        gcm.make(this);
+        Util.configureGcm(this);
 
         textNoHooks = (TextView) findViewById(R.id.textNoHooks);
         listHooks = (ListView) findViewById(R.id.list);
@@ -137,7 +135,14 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
 
                                     if(err) {
                                         AdRegister.dialog.show();
-                                        AdRegister.editNamespace.setError(getString(R.string.error_namespace_not_found));
+
+                                        if(status.response.getStatusLine().getStatusCode() == 404) {
+                                            AdRegister.editNamespace.setError(getString(R.string.error_namespace_not_found));
+                                        } else if(status.response.getStatusLine().getStatusCode() == 409) {
+                                            AdRegister.editNamespace.setError(getString(R.string.error_namespace_already_hooked));
+                                        } else {
+                                            AdRegister.editNamespace.setError(getString(R.string.error_required));
+                                        }
                                     } else {
                                         refreshNamespaces();
                                     }

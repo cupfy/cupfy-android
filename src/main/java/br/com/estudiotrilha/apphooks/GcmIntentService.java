@@ -10,8 +10,6 @@ import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
-import java.util.Calendar;
-
 import br.com.estudiotrilha.apphooks.database.Namespace;
 
 public class GcmIntentService extends IntentService
@@ -79,17 +77,18 @@ public class GcmIntentService extends IntentService
             return;
         }
 
-        int refID = (int) Calendar.getInstance().getTimeInMillis();
+        int refID = namespace.hashCode();
 
         Notification n;
 
         int iconRefID = R.drawable.logo_push;
 
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
-        bigTextStyle.bigText(message + "\n" + namespace);
+        bigTextStyle.bigText(namespace + "\n" + message);
 
         n = new NotificationCompat.Builder(GcmIntentService.this)
                 .setContentTitle(title)
+                .setContentText(namespace)
                 .setStyle(bigTextStyle)
                 .setSmallIcon(iconRefID)
                 .setAutoCancel(true)

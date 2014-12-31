@@ -73,8 +73,6 @@ public class HttpClientHelper
         if(ssl) {
             HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
         }
-
-        PORT = 3000;
     }
 
     public void setSSL()

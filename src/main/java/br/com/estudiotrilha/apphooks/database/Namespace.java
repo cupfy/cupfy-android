@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.estudiotrilha.apphooks.R;
+import br.com.estudiotrilha.apphooks.helper.Util;
 import br.com.estudiotrilha.apphooks.network.Delegate;
 import br.com.estudiotrilha.apphooks.network.Endpoints;
 import br.com.estudiotrilha.apphooks.network.HttpClientHelper;
@@ -64,8 +65,7 @@ public class Namespace extends AbstractHasManyBean {
     public static void attachHook(String namespace, final Context context, final OnAttachHook onAttachHook) {
         HttpClientHelper client = new HttpClientHelper(Endpoints.HOST, Endpoints.Device.ATTACH_HOOK, false, context);
 
-        //client.addParamForGet("pushId", gcm.getRegistrationId(this));
-        client.addParamForPost("pushId", "sagasgqtt12521rasgasgas");
+        client.addParamForPost("pushId", Util.getPushId(context));
         client.addParamForPost("namespace", namespace);
 
         Network.newRequest(client, Network.POST, new Delegate() {
@@ -101,8 +101,7 @@ public class Namespace extends AbstractHasManyBean {
     public static void loadHooks(final Context context, final OnLoadHooks onLoadHooks) {
         HttpClientHelper client = new HttpClientHelper(Endpoints.HOST, Endpoints.Device.GET_HOOKS, false, context);
 
-        //client.addParamForGet("pushId", gcm.getRegistrationId(this));
-        client.addParamForGet("pushId", "sagasgqtt12521rasgasgas");
+        client.addParamForGet("pushId", Util.getPushId(context));
 
         Network.newRequest(client, Network.GET, new Delegate() {
             @Override
@@ -156,7 +155,7 @@ public class Namespace extends AbstractHasManyBean {
         client.addParamForPost("name", name);
         client.addParamForPost("model", getDeviceModel());
         client.addParamForPost("type", "0");
-        client.addParamForPost("pushId", "sagasgqtt12521rasgasgas");
+        client.addParamForPost("pushId", Util.getPushId(context));
 
         Network.newRequest(client, Network.POST, new Delegate() {
             @Override

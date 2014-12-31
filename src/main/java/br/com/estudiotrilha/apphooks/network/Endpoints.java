@@ -5,7 +5,7 @@ package br.com.estudiotrilha.apphooks.network;
  */
 public class Endpoints
 {
-    public static String HOST = "192.168.56.1";
+    public static String HOST = "apphooks.mauriciogior.com";
 
     public static class Device
     {

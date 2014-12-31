@@ -22,6 +22,7 @@
     <string name="error_required">This field is required!</string>
     <string name="error_namespace_too_short">This namespace is too short!</string>
     <string name="error_namespace_not_found">Namespace not found!</string>
+    <string name="error_namespace_already_hooked">Namespace already hooked!</string>
 
     <string name="text_waiting_for_approval">Waiting for approval...</string>
     <string name="text_activated">Activated</string>
